@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { WidgetItem } from '../widget/widget-item';
-import { WidgetService } from '../widget/widget.service';
+import { WidgetWrapper } from '../../widgets/widget/widget-wrapper';
+import { WidgetService } from '../../widgets/widget/widget.service';
+
 
 @Component({
   selector: 'app-threats-dashboard',
@@ -8,11 +9,11 @@ import { WidgetService } from '../widget/widget.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  widgets: WidgetItem[];
+  widgetWrappers: WidgetWrapper[];
 
   constructor(private widgetService: WidgetService) { }
   ngOnInit() {
-    this.widgets = this.widgetService.getWidgets();
+    this.widgetWrappers = this.widgetService.getWidgets();
   }
 
 }

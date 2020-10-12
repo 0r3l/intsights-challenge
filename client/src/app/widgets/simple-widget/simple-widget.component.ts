@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ISimple } from '../types/simple.interface';
 
 @Component({
   selector: 'app-simple-widget',
@@ -6,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./simple-widget.component.scss']
 })
 export class SimpleWidgetComponent implements OnInit {
-  @Input() data: Array<{ title: string, count: number }> = [];
+  @Input() data: ISimple;
   constructor() { }
 
   ngOnInit() {

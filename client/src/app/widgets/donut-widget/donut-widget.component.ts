@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import * as _ from 'lodash';
+import { IDonut } from '../types/donut.interface';
 
 @Component({
   selector: 'app-donut-widget',
@@ -11,57 +12,16 @@ export class DonutWidgetComponent implements OnInit {
 
   constructor() { }
 
+  @Input() data: IDonut;
+
   ngOnInit() {
-    const result = [
-      {
-        "date": "2019-01-08T14:05:08.920Z",
-        "severity": "Low",
-        "type": "DataLeakage",
-        "sourceType": "ApplicationStores",
-        "networkType": "ClearWeb"
-      },
-      {
-        "date": "2019-01-08T14:03:04.769Z",
-        "severity": "High",
-        "type": "DataLeakage",
-        "sourceType": "BlackMarkets",
-        "networkType": "ClearWeb"
-      },
-      {
-        "date": "2019-01-08T13:13:05.615Z",
-        "severity": "Medium",
-        "type": "DataLeakage",
-        "sourceType": "HackingForums",
-        "networkType": "ClearWeb"
-      },
-      {
-        "date": "2019-01-08T10:22:35.173Z",
-        "severity": "Medium",
-        "type": "DataLeakage",
-        "sourceType": "Others",
-        "networkType": "ClearWeb"
-      },
-    ]
+    this.initChart(this.data);
+  }
 
-    function groupingBy(data, groupby) {
-      return _.groupBy(data, groupby);
-    }
+  initChart(data: IDonut) {
 
-
-    const newGroupValue = groupingBy(result, 'severity');
-    const newKeys = ['Low', 'Medium', 'High'];
-
-    const dataset = [];
-    // tslint:disable-next-line: forin
-    for (const k in newGroupValue) {
-      const kk = { name: k, value: newGroupValue[k].length };
-      dataset.push(kk);
-    }
-    const userSelectedColors = ['value'];
-    const totalCount = _.sumBy(userSelectedColors, _.partial(_.sumBy, dataset));
-
-    console.log(totalCount);
-
+    const newKeys = Object.keys(data);
+    const dataset = Object.keys(data).map(k => ({ name: k, value: data[k] }));
 
     const color = d3.scaleOrdinal()
       .domain(newKeys)

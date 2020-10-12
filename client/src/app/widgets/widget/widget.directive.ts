@@ -2,8 +2,8 @@
 import { Directive, ViewContainerRef } from '@angular/core';
 
 @Directive({
-  selector: '[panHost]',
+  selector: '[widgetHost]',
 })
-export class PanDirective {
+export class WidgetDirective {
   constructor(public viewContainerRef: ViewContainerRef) { }
 }
