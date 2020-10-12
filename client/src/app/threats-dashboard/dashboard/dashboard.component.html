@@ -1,1 +1,3 @@
-<app-pan [data]="widgetWrappers"></app-pan>
+<div *ngFor="let p of pans">
+  <app-pan [data]="p"></app-pan>
+</div>

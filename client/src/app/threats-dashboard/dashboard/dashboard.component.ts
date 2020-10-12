@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { WidgetWrapper } from '../../widgets/widget/widget-wrapper';
 import { WidgetService } from '../../widgets/widget/widget.service';
+import { IPan } from '../pan/types/pan.interface';
 
 
 @Component({
@@ -9,11 +9,12 @@ import { WidgetService } from '../../widgets/widget/widget.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  widgetWrappers: WidgetWrapper[];
+  pans: IPan[];
 
   constructor(private widgetService: WidgetService) { }
+
   ngOnInit() {
-    this.widgetWrappers = this.widgetService.getWidgets();
+    this.pans = this.widgetService.getGroupedAlerts();
   }
 
 }

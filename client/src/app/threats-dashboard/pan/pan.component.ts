@@ -1,5 +1,5 @@
 import { Component, Input} from '@angular/core';
-import { WidgetWrapper } from '../../widgets/widget/widget-wrapper';
+import { IPan } from './types/pan.interface';
 
 @Component({
   selector: 'app-pan',
@@ -7,5 +7,5 @@ import { WidgetWrapper } from '../../widgets/widget/widget-wrapper';
   styleUrls: ['./pan.component.scss']
 })
 export class PanComponent {
-  @Input() data: WidgetWrapper;
+  @Input() data: IPan;
 }

@@ -1,3 +1,9 @@
-<div *ngFor="let wr of data">
-  <app-widget-wrapper [data]="wr"></app-widget-wrapper>
+<div>
+  <div class="header">{{ data.title }}</div>
+  <div class="widgets-container">
+    <app-widgets-wrapper [data]="data.widgets"></app-widgets-wrapper>
+  </div>
+
 </div>
+
+{{ data | json }}
