@@ -4,11 +4,26 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node src/server"
+    "start": "npm run build && node dist/server",
+    "build": "rimraf dist && tsc",
+    "test": "jest --config ./jest.json"
   },
   "keywords": [],
-  "author": "",
+  "author": "Orel Eliyahu",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "lodash": "^4.17.20"
+  },
+  "devDependencies": {
+    "@types/jest": "^25.1.4",
+    "@types/lodash": "^4.14.162",
+    "@types/node": "^12.0.0",
+    "jest": "^25.1.0",
+    "jest-junit-reporter": "^1.1.0",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^26.4.1",
+    "ts-loader": "^8.0.4",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.7.4"
   }
 }
