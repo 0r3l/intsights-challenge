@@ -30,8 +30,8 @@ export class ProgressWidgetComponent implements OnInit, AfterViewInit, IWidgetCo
     const options = this.data;
     const svg = d3.select('#chart' + this.id)
       .append('svg')
-      .attr('height', 10)
-      .attr('width', 100);
+      .attr('height', 5)
+      .attr('width', '100%');
 
     const states = range(0, 100);
     const segmentWidth = 1;
@@ -43,11 +43,9 @@ export class ProgressWidgetComponent implements OnInit, AfterViewInit, IWidgetCo
 
     svg.append('rect')
       .attr('class', 'bg-rect')
-      .attr('rx', 10)
-      .attr('ry', 10)
       .attr('fill', '#1E3648')
-      .attr('height', 10)
-      .attr('width', 100)
+      .attr('height', 5)
+      .attr('width', '100%')
       .attr('x', 0);
 
     const progress = svg.append('rect')
@@ -55,10 +53,8 @@ export class ProgressWidgetComponent implements OnInit, AfterViewInit, IWidgetCo
       .attr('fill', () => {
         return colorScale(currentState);
       })
-      .attr('height', 10)
+      .attr('height', 5)
       .attr('width', 0)
-      .attr('rx', 10)
-      .attr('ry', 10)
       .attr('x', 0);
 
     progress.transition()

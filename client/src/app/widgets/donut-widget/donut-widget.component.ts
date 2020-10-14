@@ -32,7 +32,7 @@ export class DonutWidgetComponent implements OnInit, AfterViewInit, IWidgetCompo
       .range(['#4BAFD2', '#F0AC38', '#D24346']);
 
     const pie = d3.pie()
-      .value((d: any) => d.value)
+      .value(d => d.value)
       .sort(null);
 
     const w = 140;
@@ -49,7 +49,9 @@ export class DonutWidgetComponent implements OnInit, AfterViewInit, IWidgetCompo
     const svg = d3.select('#chart' + this.id)
       .append('svg')
       .attr('width', w)
-      .attr('height', h + 100)
+      .attr('height', h)
+      .style('display', 'block')
+      .style('margin', 'auto')
       .attr('class', 'shadow')
       .append('g')
       .attr('transform', 'translate(' + w / 2 + ',' + h / 2 + ')');
@@ -60,7 +62,7 @@ export class DonutWidgetComponent implements OnInit, AfterViewInit, IWidgetCompo
       .enter()
       .append('path')
       .attr('d', arc)
-      .attr('fill', (d: any, i: any) => color(d.data.name));
+      .attr('fill', (d: any) => color(d.data.name));
 
     path.transition()
       .duration(1000)

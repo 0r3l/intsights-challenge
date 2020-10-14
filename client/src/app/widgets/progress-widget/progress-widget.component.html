@@ -1,7 +1,7 @@
-<div class="widget-container">
-  <div>{{ data | camelToSpace }}</div>
-  <div class="progress-container">
-    <div [attr.id]="'chart' + id" ></div>
-    <div>{{ value }}</div>
-  </div>
+<div class="container">
+  <div class="title">{{ data | camelToSpace }}</div>
+  <ul class="widget">
+    <li [attr.id]="'chart' + id" ></li>
+    <li class="count">{{ count }}</li>
+  </ul>
 </div>

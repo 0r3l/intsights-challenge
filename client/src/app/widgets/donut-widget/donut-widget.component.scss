@@ -1,0 +1,22 @@
+.container {
+  width: 100%;
+  .legend {
+    width: 33%;
+    opacity: 0.6;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+    padding: 14px;
+
+    .item {
+      flex: 1 0 33%;
+      .text {
+        font-size: 14px;
+      }
+      .count {
+        font-size: 20px;
+      }
+    }
+  }
+}

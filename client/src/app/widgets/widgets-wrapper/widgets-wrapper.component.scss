@@ -1,19 +1,40 @@
 ul {
   list-style: none;
   margin: 0;
+  display: flex;
+  flex-wrap: wrap;
 
   //table layout
   &.layout-0 {
-    display: flex;
-    flex-wrap: wrap;
-
+    padding: 10px;
     li {
-      flex: 1 0 33%; //2 per row due margin
-      margin: 20px;
+      flex: 1 0 33%;
+      margin: 0;
       height: auto;
-      &:nth-child(2) {
-        border-bottom: solid 1px #223b50;
+      padding: 14px;
+      border-bottom: solid 1px #223b50;
+      &:nth-child(5),
+      &:nth-child(6) {
+        border-bottom: none;
       }
+    }
+  }
+  //row layout
+  &.layout-1 {
+    padding: 10px;
+    li {
+      flex: 1 0 100%;
+      margin-top: 24px;
+      height: auto;
+    }
+  }
+
+  //chart layout
+  &.layout-2 {
+    padding: 14px;
+    li {
+      width: 100%;
+      justify-content: center;
     }
   }
 }
