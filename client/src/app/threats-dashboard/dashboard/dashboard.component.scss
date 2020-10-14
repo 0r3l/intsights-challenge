@@ -1,0 +1,9 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  .pan {
+    flex: 1 0 25%; //3 per row due margin
+    margin: 20px;
+    height: auto;
+  }
+}

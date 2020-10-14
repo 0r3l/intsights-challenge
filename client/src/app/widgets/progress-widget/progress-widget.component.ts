@@ -1,36 +1,41 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import * as d3 from 'd3';
-import { range } from 'lodash';
-import { IProgress } from '../types/progress.interface';
-
+import { range, chain } from 'lodash';
+import { IWidgetComponent } from '../interfaces/widget-component.type';
+import { WidgetData } from '../interfaces/widget-data.interface';
 
 @Component({
   selector: 'app-progress-widget',
   templateUrl: './progress-widget.component.html',
   styleUrls: ['./progress-widget.component.scss']
 })
-export class ProgressWidgetComponent implements OnInit {
-
+export class ProgressWidgetComponent implements OnInit, AfterViewInit, IWidgetComponent {
+  id: string;
+  count: number;
   defaultGradientRange = ['#8DB4D3', '#8DB4D3'];
-
-  @Input() data: IProgress;
+  @Input() data: WidgetData;
 
   constructor() { }
 
   ngOnInit() {
-    this.initChart(this.data);
+    this.id = Math.random().toString().substr(2, 8);
+    this.count = chain(this.data).values().first();
   }
 
-  initChart(options: IProgress) {
+  ngAfterViewInit() {
+    this.initChart();
+  }
 
-    const svg = d3.select('#progress')
+  initChart() {
+    const options = this.data;
+    const svg = d3.select('#chart' + this.id)
       .append('svg')
       .attr('height', 10)
       .attr('width', 100);
 
     const states = range(0, 100);
     const segmentWidth = 1;
-    const currentState = options.value;
+    const currentState = chain(options).values().first().value();
 
     const colorScale = d3.scaleOrdinal()
       .domain(states)

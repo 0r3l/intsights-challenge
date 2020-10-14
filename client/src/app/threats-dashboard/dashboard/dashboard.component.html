@@ -1,3 +1,5 @@
-<div *ngFor="let p of pans">
-  <app-pan [data]="p"></app-pan>
+<div class="container">
+  <div class="pan" *ngFor="let pan of pans$ | async">
+    <app-pan [data]="pan"></app-pan>
+  </div>
 </div>

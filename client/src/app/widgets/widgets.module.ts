@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common';
 import { SimpleWidgetComponent } from './simple-widget/simple-widget.component';
 import { DonutWidgetComponent } from './donut-widget/donut-widget.component';
 import { ProgressWidgetComponent } from './progress-widget/progress-widget.component';
-import { WidgetService } from './widget/widget.service';
+import { WidgetService } from './widgets.service';
 import { WidgetsWrapperComponent } from './widgets-wrapper/widgets-wrapper.component';
 import { WidgetDirective } from './widget/widget.directive';
+import { CamelToSpacePipe } from './camel-to-space.pipe';
 
 @NgModule({
   declarations: [
@@ -13,13 +14,14 @@ import { WidgetDirective } from './widget/widget.directive';
     DonutWidgetComponent,
     ProgressWidgetComponent,
     WidgetsWrapperComponent,
-    WidgetDirective
+    WidgetDirective,
+    CamelToSpacePipe
   ],
   providers: [
     WidgetService
   ],
   imports: [
-    CommonModule
+    CommonModule,
   ],
   exports: [
     WidgetsWrapperComponent

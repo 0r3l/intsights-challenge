@@ -1,7 +1,9 @@
-import express from "express";
+import express from 'express';
+import cors from 'cors';
 import { controller } from './controller';
 
 const app = express();
+app.use(cors());
 const port = 1337; // default port to listen
 
 // define a route handler for the default home page

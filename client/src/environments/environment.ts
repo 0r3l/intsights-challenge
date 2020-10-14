@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  dev_server_url: 'http://localhost:'
+  alertsUrl: 'http://localhost:1337/alerts'
 };
 
 /*

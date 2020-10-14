@@ -1,7 +1,7 @@
 <div class="widget-container">
-  <div>{{ data.title }}</div>
+  <div>{{ data | camelToSpace }}</div>
   <div class="progress-container">
-    <div id="progress"></div>
-    <div>{{ data.value }}</div>
+    <div [attr.id]="'chart' + id" ></div>
+    <div>{{ value }}</div>
   </div>
 </div>

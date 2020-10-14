@@ -1,5 +1,5 @@
 import { Component, Input} from '@angular/core';
-import { IPan } from './types/pan.interface';
+import { IPan } from './interfaces/pan.interface';
 
 @Component({
   selector: 'app-pan',

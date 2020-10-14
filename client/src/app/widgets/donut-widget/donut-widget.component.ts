@@ -1,25 +1,29 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import * as _ from 'lodash';
-import { IDonut } from '../types/donut.interface';
+import { IWidgetComponent } from '../interfaces/widget-component.type';
+import { WidgetData } from '../interfaces/widget-data.interface';
 
 @Component({
   selector: 'app-donut-widget',
   templateUrl: './donut-widget.component.html',
   styleUrls: ['./donut-widget.component.scss']
 })
-export class DonutWidgetComponent implements OnInit {
+export class DonutWidgetComponent implements OnInit, AfterViewInit, IWidgetComponent {
 
   constructor() { }
-
-  @Input() data: IDonut;
+  id: string;
+  @Input() data: WidgetData;
 
   ngOnInit() {
-    this.initChart(this.data);
+    this.id = Math.random().toString().substr(2, 8);
+  }
+  ngAfterViewInit() {
+    this.initChart();
   }
 
-  initChart(data: IDonut) {
-
+  initChart() {
+    const data = this.data;
     const newKeys = Object.keys(data);
     const dataset = Object.keys(data).map(k => ({ name: k, value: data[k] }));
 
@@ -42,7 +46,7 @@ export class DonutWidgetComponent implements OnInit {
       .outerRadius(outerRadius)
       .innerRadius(innerRadius);
 
-    const svg = d3.select('#chart')
+    const svg = d3.select('#chart' + this.id)
       .append('svg')
       .attr('width', w)
       .attr('height', h + 100)
