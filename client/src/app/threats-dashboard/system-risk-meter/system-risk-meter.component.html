@@ -1,6 +1,6 @@
 <div class="risk-meter-container">
   <div class="title">System Risk Meter</div>
   <div class="progress">
-    <app-progress-widget [data]="rmData"></app-progress-widget>
+    <app-progress-widget [data]="rmData$ | async"></app-progress-widget>
   </div>
 </div>

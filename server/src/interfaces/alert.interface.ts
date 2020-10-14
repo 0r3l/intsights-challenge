@@ -5,7 +5,7 @@ import { SourceType } from './source-type.enum';
 import { Type } from './type.enum';
 
 export interface Alert {
-  [AlertKey.date]: Date;
+  [AlertKey.date]: string;
   [AlertKey.severity]: Severity,
   [AlertKey.type]: Type,
   [AlertKey.sourceType]: SourceType,

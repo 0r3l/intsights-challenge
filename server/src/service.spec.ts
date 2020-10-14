@@ -5,8 +5,7 @@ describe('service', () => {
   test('should aggregate data by groups', async () => {
     const json: Alert[] = await service.readJsonFile(join(process.cwd(), 'assets/data.json'));
     const aggregated = service.aggregate(json);
-    console.log(aggregated);
-    expect(aggregated).toBe(
+    expect(aggregated).toStrictEqual(
       {
         ClearWeb: {
           severity: { High: 173, Medium: 136, Low: 116 },

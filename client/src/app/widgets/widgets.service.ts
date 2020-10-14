@@ -18,9 +18,15 @@ export class WidgetService {
     private http: HttpClient,
   ) { }
 
+  getRisk() {
+    return this.http.get(`${environment.baseUrl}/risk`).pipe(
+      map(data => ({ SystemRiskMeter: data, gradientRange: ['#BBB158', '#4DAFD0'], hideTitle: true }))
+    );
+  }
+
   getAlerts() {
 
-    return this.http.get(environment.alertsUrl).pipe(
+    return this.http.get(`${environment.baseUrl}/alerts`).pipe(
       map(data => {
         const mapped = chain(data).keys().map((_, ntIndex) => {
           const networkType = Constants.NetworkOrder[ntIndex];

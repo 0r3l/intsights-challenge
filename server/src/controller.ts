@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import { join } from 'path';
-import { service } from './service'
+import { service } from './service';
+import { riskMeterService } from './risk-meter.service';
 
 class Controller {
 
@@ -8,10 +8,15 @@ class Controller {
     console.log('Creating Controller');
   }
 
-  async alerts(req: Request, res: Response) {
-    const json = await service.readJsonFile(join(process.cwd(), 'assets/data.json'));
+  async alerts(_: Request, res: Response) {
+    const json = await service.readJsonFile();
     const aggregated = service.aggregate(json);
     res.json(aggregated);
+  }
+
+  async risk(_, res: Response){
+    const risk = await riskMeterService.getRisk(300);
+    res.json(risk);
   }
 }
 

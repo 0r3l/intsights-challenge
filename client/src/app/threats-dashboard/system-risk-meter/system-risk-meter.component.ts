@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { WidgetService } from '../../widgets/widgets.service';
 
 @Component({
   selector: 'app-system-risk-meter',
@@ -6,12 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./system-risk-meter.component.scss']
 })
 export class SystemRiskMeterComponent implements OnInit {
-
-  rmData = { SystemRiskMeter: 60, gradientRange: ['#BBB158', '#4DAFD0'], hideTitle: true };
-
-  constructor() { }
+  rmData$;
+  constructor(private widgetService: WidgetService) { }
 
   ngOnInit() {
+    this.rmData$ = this.widgetService.getRisk();
   }
 
 }
