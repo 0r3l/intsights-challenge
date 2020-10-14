@@ -1,4 +1,6 @@
-.container {
+:host {
+  // border: 1px dashed #f0f;
+  display: block;
   text-align: left;
   .title {
     opacity: 0.6;

@@ -1,15 +1,17 @@
-.container {
-  .count {
-    font-size: 14px;
-    line-height: 35px;
-    opacity: 0.6;
-    text-align: left;
-  }
+:host {
+  // border: 1px dashed #f0f;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+.count {
+  font-size: 14px;
+  opacity: 0.6;
+}
 
-  .label {
-    font-size: 20px;
-    line-height: 25px;
-    opacity: 0.6;
-    text-align: left;
-  }
+.label {
+  font-size: 20px;
+  opacity: 0.6;
 }

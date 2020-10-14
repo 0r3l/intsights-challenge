@@ -1,5 +1,7 @@
-.container {
+:host {
   width: 100%;
+  // border: 1px dashed #f0f;
+  display: block;
   .legend {
     width: 50%;
     opacity: 0.6;
@@ -11,7 +13,6 @@
     justify-content: space-between;
 
     .item {
-
       .text {
         font-size: 14px;
       }

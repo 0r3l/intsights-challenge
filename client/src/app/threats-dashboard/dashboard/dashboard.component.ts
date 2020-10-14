@@ -14,7 +14,6 @@ import { IPan } from '../pan/interfaces/pan.interface';
 })
 export class DashboardComponent implements OnInit {
   pans$: Observable<IPan[]>;
-  rmData = { SystemRiskMeter: 60, gradientRange: ['#BBB158', '#4DAFD0'], hideTitle: true };
 
   constructor(private widgetService: WidgetService) { }
 

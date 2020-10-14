@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PanComponent } from './pan/pan.component';
 import { WidgetsModule } from '../widgets/widgets.module';
+import { SystemRiskMeterComponent } from './system-risk-meter/system-risk-meter.component';
 
 
 
@@ -11,6 +12,7 @@ import { WidgetsModule } from '../widgets/widgets.module';
   declarations: [
     DashboardComponent,
     PanComponent,
+    SystemRiskMeterComponent,
   ],
   imports: [
     CommonModule,

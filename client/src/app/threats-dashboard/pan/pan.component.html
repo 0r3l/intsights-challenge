@@ -1,6 +1,6 @@
-<div class="wrapper">
-  <div class="header"><p>{{ data.title }}</p></div>
-  <div class="container" [ngClass]="'container' + data.layout">
-    <app-widgets-wrapper [data]="data.widgets" [layout]="data.layout"></app-widgets-wrapper>
-  </div>
+<div class="header">
+  <p>{{ data.title }}</p>
+</div>
+<div class="container" [ngClass]="'container' + data.layout">
+  <app-widgets-wrapper [data]="data.widgets" [layout]="data.layout"></app-widgets-wrapper>
 </div>

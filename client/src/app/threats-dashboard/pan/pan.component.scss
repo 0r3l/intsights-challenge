@@ -1,17 +1,19 @@
-.wrapper {
-  margin: 0;
-  height: 279px;
-  overflow: hidden;
-}
-.header {
-  background-color: #223b50;
-  height: 37px;
-  text-align: left;
-  line-height: 37px;
-  padding-left: 10px;
-  opacity: 0.6;
-}
+:host {
+  // border: 1px dashed #f0f;
+  height: auto;
+  flex: 1 0 25%; //3 per row due margin
+  margin: 10px;
 
-.container {
-  background-color: #254a69;
+  .header {
+    background-color: #223b50;
+    height: 37px;
+    text-align: left;
+    line-height: 37px;
+    padding-left: 10px;
+    opacity: 0.6;
+  }
+
+  .container {
+    background-color: #254a69;
+  }
 }

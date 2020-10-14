@@ -1,15 +1,7 @@
-.wrapper {
-  .risk-meter-container {
-    width: 32%;
-    margin: 10px;
-    .title{
-      opacity: 0.6;
-    }
-    .progress {
-      padding: 10px;
-      background-color: #254a69;
-    }
-  }
+:host {
+  // border: 1px dashed #f0f;
+  display: block;
+
   .container {
     display: flex;
     flex-wrap: wrap;
