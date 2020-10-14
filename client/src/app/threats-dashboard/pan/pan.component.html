@@ -1,9 +1,6 @@
 <div>
   <div class="header">{{ data.title }}</div>
-  <div class="widgets-container">
-    <app-widgets-wrapper [data]="data.widgets"></app-widgets-wrapper>
+  <div [ngClass]="'container' + data.layout">
+    <app-widgets-wrapper [data]="data.widgets" [layout]="data.layout"></app-widgets-wrapper>
   </div>
-
 </div>
-
-{{ data | json }}

@@ -1,4 +1,5 @@
 import { AfterViewInit, ChangeDetectorRef, Component, ComponentFactoryResolver, Input, ViewChildren } from '@angular/core';
+import { LayoutType } from '../interfaces/layout-type.enum';
 import { WidgetItem } from '../widget/widget-item';
 import { WidgetDirective } from '../widget/widget.directive';
 
@@ -10,6 +11,7 @@ import { WidgetDirective } from '../widget/widget.directive';
 export class WidgetsWrapperComponent implements AfterViewInit {
 
   @Input() data: WidgetItem[];
+  @Input() layout: LayoutType;
   @ViewChildren(WidgetDirective, {}) widgetContent: WidgetDirective;
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,

@@ -8,8 +8,8 @@ import { WidgetItem } from './widget/widget-item';
 import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { chain, keys } from 'lodash';
-import { WidgetComponent } from './interfaces/widget-component.type';
 import { WidgetOrder } from './interfaces/widget-order.interface';
+import { Constants } from './constants';
 
 @Injectable()
 export class WidgetService {
@@ -19,25 +19,17 @@ export class WidgetService {
   ) { }
 
   getAlerts() {
-    const widgetOrder: WidgetOrder[] = [
-      { field: 'type', title: 'types', breakdownData: true, component: SimpleWidgetComponent },
-      { field: 'severity', title: 'severities', breakdownData: false, component: DonutWidgetComponent },
-      { field: 'sourceType', title: 'sources %', breakdownData: true, component: ProgressWidgetComponent }];
-
-    const networkOrder = [
-      { field: 'ClearWeb', title: 'clear web' },
-      { field: 'DarkWeb', title: 'dark web' }
-    ];
 
     return this.http.get(environment.alertsUrl).pipe(
       map(data => {
         const mapped = chain(data).keys().map((_, ntIndex) => {
-          const networkType = networkOrder[ntIndex];
+          const networkType = Constants.NetworkOrder[ntIndex];
           const ntObject = data[networkType.field];
           return keys(ntObject).map((_, tIndex) => {
             return {
-              title: `${networkType.title} ${widgetOrder[tIndex].title}`,
-              widgets: this.mapToComponentData(ntObject[widgetOrder[tIndex].field], widgetOrder[tIndex])
+              title: `${networkType.title} ${Constants.WidgetOrder[tIndex].title}`,
+              widgets: this.mapToComponentData(ntObject[Constants.WidgetOrder[tIndex].field], Constants.WidgetOrder[tIndex]),
+              layout: Constants.WidgetLayout.get(Constants.WidgetOrder[tIndex].field)
             };
           });
         }).flatten().value();

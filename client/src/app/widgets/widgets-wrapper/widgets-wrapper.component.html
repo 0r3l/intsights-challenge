@@ -1,4 +1,4 @@
-<ul>
+<ul [ngClass]="'layout-' + layout">
   <li *ngFor="let d of data">
     <ng-template widgetHost></ng-template>
   </li>

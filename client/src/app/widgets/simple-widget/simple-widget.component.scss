@@ -1,21 +1,15 @@
-.count {
-  font-family: Open Sans;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 35px;
-  text-transform: uppercase;
-  color: #ffffff;
-  opacity: 0.6;
-}
+.container {
+  .count {
+    font-size: 20px;
+    line-height: 35px;
+    opacity: 0.6;
+    text-align: left;
+  }
 
-.label {
-  font-family: Open Sans;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 25px;
-  text-transform: uppercase;
-  color: #ffffff;
-  opacity: 0.6;
+  .label {
+    font-size: 14px;
+    line-height: 25px;
+    opacity: 0.6;
+    text-align: left;
+  }
 }
