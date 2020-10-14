@@ -8,10 +8,9 @@ ul {
   &.layout-0 {
     padding: 10px;
     li {
-      flex: 1 0 33%;
+      flex: 1 0 40%;
       margin: 0;
-      height: auto;
-      padding: 14px;
+      height: 80px;
       border-bottom: solid 1px #223b50;
       &:nth-child(5),
       &:nth-child(6) {
@@ -24,7 +23,6 @@ ul {
     padding: 10px;
     li {
       flex: 1 0 100%;
-      margin-top: 24px;
       height: auto;
     }
   }

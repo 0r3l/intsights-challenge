@@ -1,9 +1,22 @@
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  .pan {
-    flex: 1 0 25%; //3 per row due margin
+.wrapper {
+  .risk-meter-container {
+    width: 32%;
     margin: 10px;
-    height: auto;
+    .title{
+      opacity: 0.6;
+    }
+    .progress {
+      padding: 10px;
+      background-color: #254a69;
+    }
+  }
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    .pan {
+      flex: 1 0 25%; //3 per row due margin
+      margin: 10px;
+      height: auto;
+    }
   }
 }

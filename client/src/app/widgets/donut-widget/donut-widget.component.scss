@@ -1,16 +1,17 @@
 .container {
   width: 100%;
   .legend {
-    width: 33%;
+    width: 50%;
     opacity: 0.6;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     margin: auto;
     padding: 14px;
+    justify-content: space-between;
 
     .item {
-      flex: 1 0 33%;
+
       .text {
         font-size: 14px;
       }

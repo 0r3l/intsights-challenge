@@ -1,5 +1,15 @@
-<div class="container">
-  <div class="pan" *ngFor="let pan of pans$ | async">
-    <app-pan [data]="pan"></app-pan>
+<div class="wrapper">
+  <div class="risk-meter-container">
+    <div class="title">System Risk Meter</div>
+    <div class="progress">
+      <app-progress-widget [data]="rmData"></app-progress-widget>
+    </div>
+
+  </div>
+
+  <div class="container">
+    <div class="pan" *ngFor="let pan of pans$ | async">
+      <app-pan [data]="pan"></app-pan>
+    </div>
   </div>
 </div>

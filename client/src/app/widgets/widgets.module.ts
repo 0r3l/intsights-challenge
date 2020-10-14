@@ -24,7 +24,8 @@ import { CamelToSpacePipe } from './camel-to-space.pipe';
     CommonModule,
   ],
   exports: [
-    WidgetsWrapperComponent
+    WidgetsWrapperComponent,
+    ProgressWidgetComponent
   ],
   entryComponents: [ SimpleWidgetComponent, DonutWidgetComponent, ProgressWidgetComponent ]
 })

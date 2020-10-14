@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="title">{{ data | camelToSpace }}</div>
+  <div *ngIf="!data.hideTitle" class="title">{{ data | camelToSpace }}</div>
   <ul class="widget">
     <li [attr.id]="'chart' + id" ></li>
     <li class="count">{{ count }}</li>
