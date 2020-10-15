@@ -1,7 +1,6 @@
-import { AfterViewInit, Component, Input, OnChanges, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import { range, chain } from 'lodash';
-import { IWidgetComponent } from '../interfaces/widget-component.type';
 import { WidgetData } from '../interfaces/widget-data.interface';
 
 @Component({
@@ -9,7 +8,7 @@ import { WidgetData } from '../interfaces/widget-data.interface';
   templateUrl: './progress-widget.component.html',
   styleUrls: ['./progress-widget.component.scss']
 })
-export class ProgressWidgetComponent implements OnInit, OnChanges, AfterViewInit {
+export class ProgressWidgetComponent implements AfterViewInit, OnInit {
   id: string;
   count: number;
   defaultGradientRange = ['#8DB4D3', '#8DB4D3'];
@@ -19,20 +18,11 @@ export class ProgressWidgetComponent implements OnInit, OnChanges, AfterViewInit
 
   ngOnInit() {
     this.id = Math.random().toString().substr(2, 8);
-  }
-
-  // for async input
-  ngOnChanges(changes) {
-    if (changes.data && changes.data.currentValue) {
-      this.data = changes.data.currentValue;
-      this.count = chain(this.data).values().first();
-      this.initChart();
-    }
+    this.count = chain(this.data).values().first();
   }
 
   ngAfterViewInit() {
     if (this.data) {
-      this.count = chain(this.data).values().first();
       this.initChart();
     }
   }

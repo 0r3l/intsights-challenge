@@ -1,4 +1,4 @@
-<app-system-risk-meter></app-system-risk-meter>
+<app-system-risk-meter *ngIf="rmData" [data]="rmData"></app-system-risk-meter>
 <div class="container">
   <app-pan *ngFor="let pan of pans$ | async" [data]="pan"></app-pan>
 </div>

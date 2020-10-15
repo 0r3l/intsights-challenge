@@ -1,7 +1,6 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import * as d3 from 'd3';
 import * as _ from 'lodash';
-import { IWidgetComponent } from '../interfaces/widget-component.type';
 import { WidgetData } from '../interfaces/widget-data.interface';
 
 @Component({
@@ -9,7 +8,7 @@ import { WidgetData } from '../interfaces/widget-data.interface';
   templateUrl: './donut-widget.component.html',
   styleUrls: ['./donut-widget.component.scss']
 })
-export class DonutWidgetComponent implements OnInit, AfterViewInit, IWidgetComponent {
+export class DonutWidgetComponent implements OnInit, AfterViewInit {
 
   constructor() { }
   id: string;
@@ -70,25 +69,6 @@ export class DonutWidgetComponent implements OnInit, AfterViewInit, IWidgetCompo
         const interpolate = d3.interpolate({ startAngle: 0, endAngle: 0 }, d);
         return (t) => arc(interpolate(t));
       });
-
-
-    const restOfTheData = () => {
-      const text = svg.selectAll('text')
-        .data(pie(dataset))
-        .enter()
-        .append('text')
-        .attr('transform', (d: any) => {
-          const _d = arc.centroid(d);
-          _d[0] *= 1;	// multiply by a constant factor
-          _d[1] *= 1;	// multiply by a constant factor
-          return 'translate(' + _d + ')';
-        })
-        .attr('dy', '.50em')
-        .attr('text-anchor', 'middle')
-        .style('text-anchor', 'middle');
-
-    };
-    setTimeout(restOfTheData, 1000);
   }
 
 
