@@ -22,7 +22,7 @@ export class ProgressWidgetComponent implements AfterViewInit, OnInit {
     const count = chain(this.data).values().first();
     this.count = this.precentage ?
       count :
-      Math.round(count / get(this.data, 'total') * 100);
+      Math.ceil(count / get(this.data, 'total') * 100);
   }
 
   ngAfterViewInit() {
@@ -38,9 +38,9 @@ export class ProgressWidgetComponent implements AfterViewInit, OnInit {
       .attr('height', 5)
       .attr('width', '100%');
 
-    const width = Math.round(+svg.style('width').replace(/px/, ''));
+    const width = Math.ceil(+svg.style('width').replace(/px/, ''));
 
-    const segmentWidth = Math.floor(width / 100);
+    const segmentWidth = Math.ceil(width / 100);
     const currentState = this.count;
 
     const colorScale = d3.scaleLinear()
