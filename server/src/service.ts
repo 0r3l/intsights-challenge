@@ -32,12 +32,7 @@ class Service {
       acc[key] = grouped;
       return acc;
     }, {}) as AggregatedAlerts;
-
   }
-
-
-
-
 
 }
 

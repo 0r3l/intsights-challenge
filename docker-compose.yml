@@ -1,0 +1,27 @@
+version: '3'
+services:
+  server:
+    container_name: insights-server
+    build:
+      context: ./server/.
+      dockerfile: dockerfile
+    environment:
+      - mongodb=mongodb
+    ports:
+      - 1337:1337
+  mongodb:
+    container_name: insights-mongo
+    image: mongo:latest
+    ports:
+      - 27017:27017
+
+  mongo_seed:
+    container_name: insights-mongo-seed
+    image: mongo:latest
+    links:
+      - mongodb
+    volumes:
+      - ./scripts:/scripts
+      - ./server/assets:/seed
+    command:
+      /scripts/import.sh

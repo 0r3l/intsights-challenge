@@ -64,12 +64,6 @@ class RiskMeterService {
       .value();
   }
 
-
-
-
-
-
-
 }
 
 export const riskMeterService = new RiskMeterService();

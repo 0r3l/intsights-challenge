@@ -1,0 +1,16 @@
+FROM node:12 AS builder
+WORKDIR /app
+COPY ./package.json ./
+RUN npm install
+COPY . .
+RUN npm run build --production
+
+FROM node:12-alpine
+WORKDIR /app
+RUN mkdir dist
+COPY --from=builder /app/dist ./dist
+RUN mkdir assets
+COPY --from=builder /app/assets ./assets
+COPY --from=builder /app/package.json ./
+RUN npm install --production
+CMD [ "node", "dist/server"]

@@ -22,9 +22,9 @@ export class WidgetService {
 
   getAlerts() {
 
-    return this.http.get(`${environment.baseUrl}/alerts`).pipe(
+    return this.http.get(`${environment.baseUrl}/mongo/alerts`).pipe(
       map(data => {
-        const mapped = chain(data).keys().map((_, ntIndex) => {
+        return chain(data).keys().map((_, ntIndex) => {
           const networkType = Constants.NetworkOrder[ntIndex];
           const ntObject = data[networkType.field];
           const totalSourceType = chain(ntObject.sourceType).values().sum().value();
@@ -32,15 +32,13 @@ export class WidgetService {
             return {
               widgets: this.mapToComponentData(
                 ntObject[Constants.WidgetOrder[tIndex].field],
-                 Constants.WidgetOrder[tIndex],
-                 totalSourceType),
+                Constants.WidgetOrder[tIndex],
+                totalSourceType),
               title: `${networkType.title} ${Constants.WidgetOrder[tIndex].title}`,
               layout: Constants.WidgetLayout.get(Constants.WidgetOrder[tIndex].field)
             };
           });
         }).flatten().value();
-        console.log(mapped);
-        return mapped;
       })
     );
 
