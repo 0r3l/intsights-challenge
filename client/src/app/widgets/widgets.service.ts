@@ -1,9 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IPan } from '../threats-dashboard/pan/interfaces/pan.interface';
-import { DonutWidgetComponent } from './donut-widget/donut-widget.component';
-import { ProgressWidgetComponent } from './progress-widget/progress-widget.component';
-import { SimpleWidgetComponent } from './simple-widget/simple-widget.component';
 import { WidgetItem } from './widget/widget-item';
 import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
@@ -31,10 +27,14 @@ export class WidgetService {
         const mapped = chain(data).keys().map((_, ntIndex) => {
           const networkType = Constants.NetworkOrder[ntIndex];
           const ntObject = data[networkType.field];
+          const totalSourceType = chain(ntObject.sourceType).values().sum().value();
           return keys(ntObject).map((_, tIndex) => {
             return {
+              widgets: this.mapToComponentData(
+                ntObject[Constants.WidgetOrder[tIndex].field],
+                 Constants.WidgetOrder[tIndex],
+                 totalSourceType),
               title: `${networkType.title} ${Constants.WidgetOrder[tIndex].title}`,
-              widgets: this.mapToComponentData(ntObject[Constants.WidgetOrder[tIndex].field], Constants.WidgetOrder[tIndex]),
               layout: Constants.WidgetLayout.get(Constants.WidgetOrder[tIndex].field)
             };
           });
@@ -46,9 +46,9 @@ export class WidgetService {
 
   }
 
-  private mapToComponentData(data: {}, options: WidgetOrder) {
+  private mapToComponentData(data: {}, options: WidgetOrder, total: number) {
     if (options.breakdownData) {
-      return keys(data).map(d => new WidgetItem(options.component, { [d]: data[d] }));
+      return keys(data).map(d => new WidgetItem(options.component, { [d]: data[d], total }));
     }
     return [new WidgetItem(options.component, data)];
   }

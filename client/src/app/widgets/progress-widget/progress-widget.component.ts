@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import * as d3 from 'd3';
-import { range, chain } from 'lodash';
+import { chain, get } from 'lodash';
 import { WidgetData } from '../interfaces/widget-data.interface';
 
 @Component({
@@ -13,12 +13,16 @@ export class ProgressWidgetComponent implements AfterViewInit, OnInit {
   count: number;
   defaultGradientRange = ['#8DB4D3', '#8DB4D3'];
   @Input() data: WidgetData;
+  @Input() precentage = false;
 
   constructor() { }
 
   ngOnInit() {
     this.id = Math.random().toString().substr(2, 8);
-    this.count = chain(this.data).values().first();
+    const count = chain(this.data).values().first();
+    this.count = this.precentage ?
+      count :
+      Math.round(count / get(this.data, 'total') * 100);
   }
 
   ngAfterViewInit() {
@@ -34,12 +38,13 @@ export class ProgressWidgetComponent implements AfterViewInit, OnInit {
       .attr('height', 5)
       .attr('width', '100%');
 
-    const states = range(0, 101);
-    const segmentWidth = 1;
-    const currentState = chain(options).values().first().value();
+    const width = Math.round(+svg.style('width').replace(/px/, ''));
+
+    const segmentWidth = Math.floor(width / 100);
+    const currentState = this.count;
 
     const colorScale = d3.scaleLinear()
-      .domain([0, 100])
+      .domain([0, width])
       .range(options.gradientRange || this.defaultGradientRange);
 
     svg.append('rect')
@@ -51,18 +56,13 @@ export class ProgressWidgetComponent implements AfterViewInit, OnInit {
 
     const progress = svg.append('rect')
       .attr('class', 'progress-rect')
-      .attr('fill', () => {
-        return colorScale(currentState);
-      })
+      .attr('fill', colorScale(0))
       .attr('height', 5);
 
     progress.transition()
       .duration(1000)
-      .attr('width', () => {
-        const index = states.indexOf(currentState);
-        return `${(index + 1) * segmentWidth}%`;
-      });
-
+      .attr('width', currentState * segmentWidth)
+      .attrTween('fill', () => (t) => colorScale(t));
   }
 
 }
