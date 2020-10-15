@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import * as d3 from 'd3';
-import { chain, get } from 'lodash';
+import { chain, get, range } from 'lodash';
 import { WidgetData } from '../interfaces/widget-data.interface';
 
 @Component({
@@ -44,7 +44,7 @@ export class ProgressWidgetComponent implements AfterViewInit, OnInit {
     const currentState = this.count;
 
     const colorScale = d3.scaleLinear()
-      .domain([0, width])
+      .domain(range(0, width, 0))
       .range(options.gradientRange || this.defaultGradientRange);
 
     svg.append('rect')
