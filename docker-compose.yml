@@ -12,8 +12,6 @@ services:
   mongodb:
     container_name: insights-mongo
     image: mongo:latest
-    ports:
-      - 27017:27017
 
   mongo_seed:
     container_name: insights-mongo-seed
