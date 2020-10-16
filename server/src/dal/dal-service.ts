@@ -18,10 +18,9 @@ class DalService {
         if (err) {
           reject(err);
         }
-        cursor.toArray((_, documents) => {
-          console.log(documents);
-          resolve(documents);
-        })
+        cursor.toArray((_, documents) =>
+          resolve(documents)
+        )
       })
     })
   }
