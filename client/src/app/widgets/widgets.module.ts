@@ -6,7 +6,8 @@ import { ProgressWidgetComponent } from './progress-widget/progress-widget.compo
 import { WidgetService } from './widgets.service';
 import { WidgetsWrapperComponent } from './widgets-wrapper/widgets-wrapper.component';
 import { WidgetDirective } from './widget/widget.directive';
-import { CamelToSpacePipe } from './camel-to-space.pipe';
+import { CamelToSpacePipe } from '../pipes/camel-to-space.pipe';
+import { ReorderPipe } from '../pipes/reorder.pipe';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { CamelToSpacePipe } from './camel-to-space.pipe';
     ProgressWidgetComponent,
     WidgetsWrapperComponent,
     WidgetDirective,
-    CamelToSpacePipe
+    CamelToSpacePipe,
+    ReorderPipe
   ],
   providers: [
     WidgetService

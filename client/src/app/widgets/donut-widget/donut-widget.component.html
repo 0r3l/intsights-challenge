@@ -1,6 +1,6 @@
 <div [attr.id]="'chart' + id"></div>
 <div class="legend">
-  <div class="item" *ngFor="let l of data | keyvalue">
+  <div class="item" *ngFor="let l of data | keyvalue | reorder: 'High':'Medium':'Low' ">
     <div class="text">{{ l.key }}</div>
     <div class="count">{{ l.value }}</div>
   </div>

@@ -4,7 +4,6 @@ import { AppComponent } from './app.component';
 import { ThreatsDashboardModule } from './threats-dashboard/threats-dashboard.module';
 import { HttpClientModule } from '@angular/common/http';
 
-
 @NgModule({
   declarations: [
     AppComponent,
