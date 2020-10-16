@@ -1,3 +1,3 @@
 # How to run
-- make sure you have docker-compose installed
-- run bash script: `./scripts/run.sh`
+- Please make sure you have docker-compose installed
+- Run bash script: `./scripts/run.sh`
