@@ -35,7 +35,7 @@ export class ProgressWidgetComponent implements AfterViewInit, OnInit {
     const options = this.data;
     const svg = d3.select('#chart' + this.id)
       .append('svg')
-      .attr('height', 5)
+      .attr('height', 6.5)
       .attr('width', '100%');
 
     const width = Math.ceil(+svg.style('width').replace(/px/, ''));

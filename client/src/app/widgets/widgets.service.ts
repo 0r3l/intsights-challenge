@@ -28,7 +28,7 @@ export class WidgetService {
           const networkType = Constants.NetworkOrder[ntIndex];
           const ntObject = data[networkType.field];
           const totalSourceType = chain(ntObject.sourceType).values().sum().value();
-          return keys(ntObject).map((_, tIndex) => {
+          return keys(ntObject).map((__, tIndex) => {
             return {
               widgets: this.mapToComponentData(
                 ntObject[Constants.WidgetOrder[tIndex].field],

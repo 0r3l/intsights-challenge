@@ -28,7 +28,6 @@ export class WidgetsWrapperComponent implements AfterViewInit {
     this.data.forEach((widgetItem, index) => {
       const componentFactory = this.componentFactoryResolver.resolveComponentFactory(widgetItem.component);
       const viewContainerRef = (this.widgetContent as any)._results[index].viewContainerRef;
-      viewContainerRef.clear();
       const componentRef = viewContainerRef.createComponent(componentFactory);
       componentRef.instance.data = widgetItem.data;
     });
