@@ -1,4 +1,4 @@
 #! /bin/bash
 
 docker-compose up -d --force-recreate
-cd client && ng serve --open
+cd client && npm i && ng serve --open
