@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PanComponent } from './pan/pan.component';
@@ -16,7 +17,8 @@ import { SystemRiskMeterComponent } from './system-risk-meter/system-risk-meter.
   ],
   imports: [
     CommonModule,
-    WidgetsModule
+    WidgetsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   exports: [

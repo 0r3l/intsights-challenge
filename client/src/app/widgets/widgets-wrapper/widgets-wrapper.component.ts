@@ -1,3 +1,4 @@
+import { animate, query, stagger, style, transition, trigger } from '@angular/animations';
 import { AfterViewInit, ChangeDetectorRef, Component, ComponentFactoryResolver, Input, ViewChildren } from '@angular/core';
 import { LayoutType } from '../interfaces/layout-type.enum';
 import { WidgetItem } from '../widget/widget-item';
@@ -6,7 +7,19 @@ import { WidgetDirective } from '../widget/widget.directive';
 @Component({
   selector: 'app-widgets-wrapper',
   templateUrl: './widgets-wrapper.component.html',
-  styleUrls: ['./widgets-wrapper.component.scss']
+  styleUrls: ['./widgets-wrapper.component.scss'],
+  animations: [
+    trigger('listAnimation', [
+      transition('* => *', [ // each time the binding value changes
+        query(':enter', [
+          style({ opacity: 0 }),
+          stagger(100, [
+            animate('0.5s', style({ opacity: 1 }))
+          ])
+        ])
+      ])
+    ])
+  ]
 })
 export class WidgetsWrapperComponent implements AfterViewInit {
 
