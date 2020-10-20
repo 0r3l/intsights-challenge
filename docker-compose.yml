@@ -1,7 +1,7 @@
 version: '3'
 services:
   server:
-    container_name: insights-server
+    container_name: intsights-server
     build:
       context: ./server/.
       dockerfile: dockerfile
@@ -10,11 +10,11 @@ services:
     ports:
       - 1337:1337
   mongodb:
-    container_name: insights-mongo
+    container_name: intsights-mongo
     image: mongo:latest
 
   mongo_seed:
-    container_name: insights-mongo-seed
+    container_name: intsights-mongo-seed
     image: mongo:latest
     links:
       - mongodb
@@ -23,3 +23,11 @@ services:
       - ./server/assets:/seed
     command:
       /scripts/import.sh
+
+  client:
+    container_name: intsight-client
+    build:
+      context: ./client/.
+      dockerfile: dockerfile
+    ports:
+     - 4200:4200
